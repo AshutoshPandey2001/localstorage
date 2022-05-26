@@ -1,0 +1,74 @@
+<div class="row">
+       
+  <div class="col-lg-12 text-center">
+    <h2>Staff Details</h2>
+  </div>
+</div>
+<div class="row border1">
+    <div class="container">
+      <div class="card rounded-lg" style="background-color: rgb(130, 216, 238); border: 5px solid #030c0325;">
+        <div class="card-body">
+
+    <div class="row">
+      <div class="col-lg-4">
+        <form [formGroup]="StaffForm" style="border: 3px solid white; padding: 10px;">
+        <div class="form-group">
+          <label >Staff Name:</label>
+          <input type="email" class="form-control" placeholder="Enter Staff Name" formControlName="stffName" [ngClass]="{'is-invalid': stffButton && f['stffName'].errors}">
+          <div *ngIf="stffButton && f['stffName'].errors"  class="invalid-feedback">
+            <div *ngIf="f['stffName'].errors['required']">
+              Staff Name Is required
+            </div>
+            <div *ngIf="f['stffName'].errors['minlength']">
+              Staff Name must be Minimus 4 Char ....!
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label >Salary:</label>
+          <input type="text" class="form-control" placeholder="Enter Salary" formControlName="staffSalary" [ngClass]="{'is-invalid': stffButton && f['staffSalary'].errors}">
+          <div *ngIf="stffButton && f['staffSalary'].errors" class="invalid-feedback" >
+            Staff Salary Is required
+          </div>
+        </div>
+        
+        <button *ngIf="edit==false" class="btn btn-primary" (click)="addStaff()" >Add Details</button>
+        <button *ngIf="edit==true" class="btn btn-warning" (click)="updateStaff()" >Update Details</button>
+        </form>
+      </div>
+      <div class="col-lg-8">
+        <div class="col-lg-12" style="padding-bottom: 1rem;">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="term">
+  
+        </div>
+  
+        <div class="col-lg-12 table-responsive" style="height: 200px;">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Staff Name</th>
+              <th>Salary</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stf of staffList |filter:term ; let stff=index">
+              <td>{{stf.stffName}}</td>
+              <td>{{stf.staffSalary}}</td>
+              <td>
+                <button class="btn btn-warning" (click)="stfEdi(stff,stf)">Edit</button>
+                <button class="btn btn-danger" (click)="stfDel(stff)">Delete</button>
+  
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+       </div>
+
+    </div>
+    </div>
+  </div>
