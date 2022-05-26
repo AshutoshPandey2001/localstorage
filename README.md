@@ -1,6 +1,7 @@
 # AngularProject3
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+
 To Run This Project first Run command in intigrated terminal 'npm install'
 ## Development server
 
